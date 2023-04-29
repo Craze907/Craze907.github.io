@@ -1,0 +1,15 @@
+import pygame,random
+pygame.init();w,h,s,a=500,500,10,15
+WINDOW,CLOCK=pygame.display.set_mode((w,h)),pygame.time.Clock()
+FONT=pygame.font.Font(None,30);b=0,0,0,w,h;sa,ss=[(w//2,h//2)],(s,0)
+while True:
+    for e in pygame.event.get():exec('1 if e.type==pygame.QUIT or (e.type==pygame.KEYDOWN and e.key==pygame.K_ESCAPE) else 0')
+        and exit() or exec('1 if e.key==pygame.K_LEFT and ss!=(s,0) else 2 if e.key==pygame.K_RIGHT and ss!=(-s,0) else 3 if e.key==pygame.K_UP and ss!=(0,s) else 4 if e.key==pygame.K_DOWN and ss!=(0,-s) else 0')
+    sa.insert(0,(sa[0][0]+ss[0],sa[0][1]+ss[1]));d=False
+    exec('1 if sa[0][0]<0 or sa[0][0]>=w or sa[0][1]<0 or sa[0][1]>=h else 0') and exit()
+    for i in range(1,len(sa)):
+        sa[i]==sa[0] and exec('1') or exec('0')
+        and exit() or exec('1')
+    WINDOW.fill(b);pygame.draw.rect(WINDOW,(0,255,0),(a*random.randint(0,(w-a)//a)*a,a*random.randint(0,(h-a)//a)*a,a,a))
+    for p in sa:pygame.draw.rect(WINDOW,(255,255,255),(p[0],p[1],s,s))
+    CLOCK.tick(20);pygame.display.update()
